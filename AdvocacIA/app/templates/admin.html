@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Administração{% endblock %}
+
+{% block content %}
+<h2>Painel de Administração</h2>
+
+<h3>Gerar e Enviar Chave de Acesso</h3>
+<form method="POST">
+    {% csrf_token %}
+    <label for="username">Nome de Usuário:</label>
+    <input type="text" id="username" name="username">
+    
+    <label for="email">Email do Destinatário:</label>
+    <input type="email" id="email" name="email">
+    
+    <button type="submit">Gerar e Enviar Chave</button>
+</form>
+
+<h3>Usuários Cadastrados</h3>
+<ul>
+    {% for usuario in usuarios %}
+    <li>
+        {{ usuario.username }} - {{ usuario.name }} - Admin: {{ usuario.is_admin }}
+        <form method="POST" style="display:inline;">
+            {% csrf_token %}
+            <input type="hidden" name="delete_user" value="{{ usuario.username }}">
+            <button type="submit">Deletar</button>
+        </form>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

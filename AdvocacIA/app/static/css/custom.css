@@ -1,0 +1,279 @@
+/* General body styling */
+body {
+    background-color: #F7F7F7;
+    color: #333;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Background gradient */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #002F6C 0%, #F7F7F7 100%);
+    z-index: -1;
+    opacity: 0.9;
+}
+
+/* Container styling to add padding and center content */
+.container {
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 960px;
+    margin: 50px auto;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    color: #002F6C;
+}
+
+/* Links and buttons */
+a, button {
+    color: #002F6C;
+}
+
+a:hover, button:hover {
+    color: #D4AF37;
+}
+
+/* Updated button styles */
+.btn-primary {
+    background-color: #C0392B; /* Existing color */
+    border-color: #C0392B;
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition */
+}
+
+.btn-primary:hover {
+    background-color: #A93226;
+    border-color: #A93226;
+    transform: translateY(-2px); /* Slight lift effect on hover */
+}
+
+/* Updated form input styles */
+input[type="text"], input[type="email"], input[type="password"], textarea {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, textarea:focus {
+    border-color: #002F6C;
+    box-shadow: 0 0 5px rgba(0, 47, 108, 0.2);
+}
+
+/* Sidebar */
+.sidebar {
+    width: 60px; /* Collapsed width */
+    height: 100vh;
+    background-color: #002F6C;
+    padding-top: 20px;
+    position: fixed;
+    color: #FFFFFF;
+    transition: width 0.3s;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items horizontally */
+    z-index: 1000; /* Ensure sidebar stays on top */
+}
+
+.sidebar .sidebar-title-icon,
+.sidebar h2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%; /* Ensure full width for proper alignment */
+    margin: 0; /* Remove any default margins */
+    text-align: center;
+}
+
+.sidebar .sidebar-title-icon {
+    font-size: 28px; /* Adjust icon size */
+    margin-right: 10px; /* Space between icon and title */
+    opacity: 1; /* Ensure the icon is visible */
+}
+
+.sidebar h2 {
+    font-size: 24px; /* Adjust title size */
+    opacity: 0; /* Hide title in collapsed mode */
+    transition: opacity 0.3s;
+    color: #FFFFFF;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.sidebar .nav-link {
+    display: flex;
+    flex-direction: column; /* Align icon and text vertically in collapsed mode */
+    align-items: center; /* Center align items */
+    padding: 15px 0; /* Adjust padding for center alignment */
+    color: #FFFFFF;
+    transition: all 0.3s;
+}
+
+.sidebar .nav-link i {
+    font-size: 20px;
+    margin-right: 0;
+}
+
+.sidebar .nav-link b {
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0; /* Hide text in collapsed mode */
+    transition: opacity 0.3s;
+}
+
+.sidebar:hover {
+    width: 250px; /* Expanded width on hover */
+}
+
+.sidebar:hover h2 {
+    opacity: 1; /* Show title when sidebar is expanded */
+}
+
+.sidebar:hover .sidebar-title-icon {
+    margin-right: 10px;
+    opacity: 0; /* Maintain space between icon and title when expanded */
+}
+
+.sidebar:hover .nav-link {
+    flex-direction: row;
+    display: flex; /* Align icon and text vertically in collapsed mode */
+    align-items: center; /* Center align items */
+}
+
+.sidebar:hover .nav-link b {
+    opacity: 1;
+}
+
+.sidebar:hover .nav-link i {
+    margin-right: 10px; /* Space between icon and text when expanded */
+}
+
+.sidebar .nav-link.active, .sidebar .nav-link:hover {
+    background-color: #34495E; /* Slightly darker for hover/active */
+    color: #FFFFFF;
+}
+
+/* User Profile Dropdown */
+.user-profile-container {
+    margin-bottom: 20px;
+}
+
+.sidebar .dropdown .user-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.sidebar .dropdown .user-profile img {
+    border-radius: 50%;
+    border: 2px solid #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar .dropdown .dropdown-menu {
+    background-color: #f8f9fa; /* Dropdown background color */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    left: 60px; /* Adjust dropdown to appear next to the sidebar */
+    top: 10px; /* Align with the user's profile picture */
+}
+
+.sidebar .dropdown .dropdown-item {
+    color: #343a40; /* Dropdown item text color */
+}
+
+.sidebar .dropdown .dropdown-item:hover {
+    background-color: #e9ecef; /* Background color on hover */
+}
+
+/* Main Content */
+.content {
+    margin-left: 60px; /* Adjusted for collapsed sidebar */
+    padding: 20px;
+    background-color: #FFFFFF;
+    transition: margin-left 0.3s;
+}
+
+.sidebar:hover ~ .content {
+    margin-left: 250px; /* Adjusted for expanded sidebar */
+}
+
+/* Alertas */
+.alert {
+    background-color: #f8d7da;
+    border-radius: 4px;
+    align-items: center;
+    position: relative;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.alert-icon {
+    font-size: 20px;
+    margin-right: 15px;
+}
+
+.alert-dismissible .close {
+    position: relative;
+    top: -6px;
+    right: -10px;
+    color: inherit;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+}
+
+.alert-warning {
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+    color: #856404;
+}
+
+.alert-info {
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+    color: #0c5460;
+}
+
+.form-text.text-muted {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+
+.alert-custom {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+

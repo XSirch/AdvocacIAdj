@@ -1,0 +1,185 @@
+/* General body styling */
+body {
+    background-color: #F7F7F7;
+    color: #333;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Background gradient */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #002F6C 0%, #F7F7F7 100%);
+    z-index: -1;
+    opacity: 0.9;
+}
+
+/* Container styling to add padding and center content */
+.container {
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 960px;
+    margin: 50px auto;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    color: #002F6C;
+}
+
+/* Links and buttons */
+a, button {
+    color: #002F6C;
+}
+
+a:hover, button:hover {
+    color: #D4AF37;
+}
+
+/* Updated button styles */
+.btn-primary {
+    background-color: #C0392B; /* Existing color */
+    border-color: #C0392B;
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition */
+}
+
+.btn-primary:hover {
+    background-color: #A93226;
+    border-color: #A93226;
+    transform: translateY(-2px); /* Slight lift effect on hover */
+}
+
+/* Updated form input styles */
+input[type="text"], input[type="email"], input[type="password"], textarea {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, textarea:focus {
+    border-color: #002F6C;
+    box-shadow: 0 0 5px rgba(0, 47, 108, 0.2);
+}
+
+/* Sidebar */
+.sidebar {
+    width: 60px; /* Collapsed width */
+    height: 100vh;
+    background-color: #002F6C;
+    padding-top: 20px;
+    position: fixed;
+    color: #FFFFFF; 
+    transition: width 0.3s;
+    overflow: hidden;
+}
+
+.sidebar h2, .sidebar .sidebar-title-icon {
+    display: flex;
+    align-items: center;
+    font-size: 24px; /* Adjust font size as needed */
+}
+
+.sidebar .sidebar-title-icon {
+    margin-right: 10px; /* Space between icon and title text */
+    font-size: 28px; /* Adjust icon size */
+    opacity: 1; /* Ensure icon is visible when collapsed */
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.sidebar h2 {
+    opacity: 0;
+}
+
+.sidebar .nav-link {
+    display: flex;
+    color: #FFFFFF;
+    align-items: center; /* Align items (icon and text) vertically */
+}
+
+.sidebar .nav-link b {
+    font-size: 16px;
+    text-align: center;
+    white-space: nowrap;
+    transition: opacity 0.3s, margin-left 0.3s;
+    opacity: 0;     /* Hide text in collapsed mode */
+}
+
+.sidebar .nav-link i {
+    font-size: 16px; /* Make icons slightly larger */
+    margin-right: 5px; /* Remove margin between icon and text */
+    vertical-align: middle;
+}
+
+.sidebar .nav-link i, .sidebar .nav-link b {
+    line-height: 2; /* Make sure line height is consistent */
+    vertical-align: middle; /* Vertically center align the text and icon */
+    display: inline-block; /* Ensure the elements are inline-block */
+}
+
+.sidebar:hover {
+    width: 250px; /* Expanded width on hover */
+    color: #FFFFFF;
+}
+
+.sidebar:hover h2 {
+    opacity: 1;
+}
+
+.sidebar:hover .sidebar-title-icon {
+    opacity: 0; /* Hide icon when expanded */
+}
+
+.sidebar:hover .nav-link {
+    display: flex;
+    color: #FFFFFF;
+    align-items: center; /* Align items (icon and text) vertically */
+}
+.sidebar:hover .nav-link b {
+    opacity: 1;
+    font-size: 16px;
+    text-align: center;
+    white-space: nowrap;
+    transition: opacity 0.3s, margin-left 0.3s;
+}
+
+.sidebar:hover .nav-link i {
+    font-size: 16px; /* Make icons slightly larger */
+    margin-right: 5px; /* Remove margin between icon and text */
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.sidebar .nav-link.active,.sidebar .nav-link:hover {
+    background-color: #34495E; /* Slightly darker for hover/active */
+    color: #FFFFFF;
+}
+
+/* Main Content */
+.content {
+    margin-left: 60px; /* Adjusted for collapsed sidebar */
+    padding: 20px;
+    background-color: #FFFFFF;
+    transition: margin-left 0.3s;
+}
+
+.sidebar:hover ~ .content {
+    margin-left: 250px; /* Adjusted for expanded sidebar */
+}
+
+
+
+
+
+

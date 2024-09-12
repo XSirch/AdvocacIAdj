@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Minha Conta</h1>
+    <p>Bem-vindo, {{ user.username }}!</p>
+    
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="picture">Foto de Perfil</label>
+            {{ form.picture }}
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">Atualizar Perfil</button>
+    </form>
+</div>
+{% endblock %}

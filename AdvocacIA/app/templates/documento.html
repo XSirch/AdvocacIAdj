@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}Documentos{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Documentos</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Gerar Documento</button>
+    </form>
+    <!-- Display generated documents here -->
+    {% if documentos %}
+    <div class="mt-4">
+        <h3>Documentos Gerados</h3>
+        <ul>
+            {% for documento in documentos %}
+            <li>{{ documento.nome }} - <a href="{{ documento.download_url }}">Download</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        
+        {% if documento_gerado %}
+            <h4>Documento Gerado:</h4>
+            <textarea readonly class="form-control" rows="10">{{ documento_gerado }}</textarea>
+        {% endif %}
+        
+        {% if verificacao %}
+            <h4>Verificação:</h4>
+            <div class="alert alert-warning">{{ verificacao }}</div>
+        {% endif %}
+        
+        <!-- Campo para sugestões adicionais -->
+        {% if original_prompt %}
+            <input type="hidden" name="original_prompt" value="{{ original_prompt }}">
+            <label for="additional_suggestions">Sugestões Adicionais:</label>
+            <textarea name="additional_suggestions" class="form-control" rows="3"></textarea>
+        {% endif %}
+    
+        <button type="submit" name="regenerate" class="btn btn-warning mt-3">Regenerar Documento</button>
+    </form>
+</div>
+{% endblock %}
